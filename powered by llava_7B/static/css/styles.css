@@ -4,7 +4,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: rgba(240, 240, 240, 0.9); /* Transparent background */
     margin: 0;
 }
 
@@ -15,8 +15,8 @@ body {
     width: 90%;
     max-width: 600px;
     height: 80vh;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent background */
+    border: 1px solid rgba(204, 204, 204, 0.8);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -24,7 +24,7 @@ body {
 }
 
 #toggle-history-btn {
-    position: absolute;
+    position: fixed;
     top: 10px;
     left: 10px;
     background-color: #007bff;
@@ -33,6 +33,8 @@ body {
     padding: 10px;
     cursor: pointer;
     font-size: 18px;
+    z-index: 1000; /* Ensure it stays on top */
+    border-radius: 5px; /* Rounded button */
 }
 
 #toggle-history-btn:hover {
@@ -43,9 +45,10 @@ body {
     flex: 1;
     padding: 10px;
     overflow-y: auto;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.8);
     display: flex;
     flex-direction: column;
+    backdrop-filter: blur(10px); /* Background blur */
 }
 
 .message {
@@ -68,12 +71,13 @@ body {
     align-self: flex-start;
     margin-right: auto;
     text-align: left;
-    border: 1px solid #e5e5ea;
+    border: 1px solid rgba(229, 229, 234, 0.8);
 }
 
 #input-area {
     display: flex;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid rgba(204, 204, 204, 0.8);
+    backdrop-filter: blur(10px); /* Background blur */
 }
 
 #chat-input {
@@ -81,6 +85,8 @@ body {
     padding: 10px;
     border: none;
     outline: none;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px; /* Rounded input field */
 }
 
 #send-btn {
@@ -89,6 +95,7 @@ body {
     color: white;
     border: none;
     cursor: pointer;
+    border-radius: 5px; /* Rounded button */
 }
 
 #send-btn:hover {
@@ -101,7 +108,7 @@ body {
     top: 0;
     height: 100%;
     width: 300px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9); /* Transparent background */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
     transition: left 0.3s;
@@ -119,6 +126,12 @@ body {
     border: none;
     font-size: 24px;
     cursor: pointer;
+}
+
+#history-title {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 24px;
 }
 
 #history-content {
