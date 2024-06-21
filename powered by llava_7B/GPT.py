@@ -13,7 +13,7 @@ def index():
 @app.route('/send_message', methods=['POST'])
 def send_message():
     user_message = request.json.get('message')
-    bot_response = "This is a bot response to: " + user_message
+    bot_response = "This is a bot response to: " + user_message  # -------------------------------- Change here bot response
     save_to_history(user_message, bot_response)
     return jsonify(response=bot_response)
 
