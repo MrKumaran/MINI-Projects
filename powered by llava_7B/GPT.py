@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 import os
+import ollama
 
 app = Flask(__name__)
 history_file = 'chat_history.txt'
+
+# Assuming 'llava' is the correct Ollama model name
+ollama_model = 'llava'
 
 
 @app.route('/')
@@ -13,8 +17,22 @@ def index():
 @app.route('/send_message', methods=['POST'])
 def send_message():
     user_message = request.json.get('message')
-    bot_response = "This is a bot response to: " + user_message  # -------------------------------- Change here bot response
+
+    # Chat with Ollama
+    response = ollama.chat(model=ollama_model, messages=[
+        {
+            'role': 'user',
+            'content': user_message,
+        },
+    ])
+
+    # Extract bot's response content
+    bot_response = response['message']['content']
+
+    # Save to chat history
     save_to_history(user_message, bot_response)
+
+    # Return bot's response to frontend
     return jsonify(response=bot_response)
 
 
@@ -31,6 +49,7 @@ def get_history():
                     history.append({'sender': 'bot', 'message': line.replace('Bot: ', '').strip()})
     else:
         history.append({'sender': 'bot', 'message': 'No chat history available.'})
+
     return jsonify(history)
 
 
