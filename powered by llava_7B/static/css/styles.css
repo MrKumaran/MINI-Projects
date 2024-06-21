@@ -52,6 +52,8 @@ body {
 }
 
 .message {
+    display: flex;
+    align-items: center;
     margin: 10px 0;
     padding: 10px;
     border-radius: 20px;
@@ -72,6 +74,16 @@ body {
     margin-right: auto;
     text-align: left;
     border: 1px solid rgba(229, 229, 234, 0.8);
+}
+
+.message .icon {
+    margin-right: 10px;
+}
+
+.message.user .icon {
+    order: 2;
+    margin-right: 0;
+    margin-left: 10px;
 }
 
 #input-area {
@@ -137,4 +149,33 @@ body {
 #history-content {
     padding: 20px;
     white-space: pre-wrap;
+}
+
+.history-message {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 20px;
+    word-wrap: break-word;
+}
+
+.history-message.user {
+    background-color: #dcf8c6;
+    text-align: right;
+}
+
+.history-message.bot {
+    background-color: #ffffff;
+    border: 1px solid rgba(229, 229, 234, 0.8);
+    text-align: left;
+}
+
+.history-message .icon {
+    margin-right: 10px;
+}
+
+.history-message.user .icon {
+    margin-right: 0;
+    margin-left: 10px;
 }

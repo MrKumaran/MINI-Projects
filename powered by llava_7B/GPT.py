@@ -20,12 +20,18 @@ def send_message():
 
 @app.route('/get_history', methods=['GET'])
 def get_history():
+    history = []
     if os.path.exists(history_file):
         with open(history_file, 'r') as f:
-            history = f.read()
+            lines = f.readlines()
+            for line in lines:
+                if line.startswith('User: '):
+                    history.append({'sender': 'user', 'message': line.replace('User: ', '').strip()})
+                elif line.startswith('Bot: '):
+                    history.append({'sender': 'bot', 'message': line.replace('Bot: ', '').strip()})
     else:
-        history = 'No chat history available.'
-    return history
+        history.append({'sender': 'bot', 'message': 'No chat history available.'})
+    return jsonify(history)
 
 
 def save_to_history(user_message, bot_response):
