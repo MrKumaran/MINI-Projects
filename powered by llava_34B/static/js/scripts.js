@@ -5,6 +5,9 @@ document.getElementById('chat-input').addEventListener('keypress', function(even
     }
 });
 
+document.getElementById('toggle-history-btn').addEventListener('click', toggleHistory);
+document.getElementById('close-history-btn').addEventListener('click', toggleHistory);
+
 function sendMessage() {
     const inputField = document.getElementById('chat-input');
     const messageText = inputField.value.trim();
@@ -33,4 +36,17 @@ function addMessage(sender, text) {
     messageElement.textContent = text;
     chatBox.appendChild(messageElement);
     chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function toggleHistory() {
+    const historyPanel = document.getElementById('history-panel');
+    historyPanel.classList.toggle('open');
+
+    if (historyPanel.classList.contains('open')) {
+        fetch('/get_history')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('history-content').textContent = data;
+        });
+    }
 }

@@ -20,6 +20,24 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    position: relative;
+}
+
+
+#toggle-history-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#toggle-history-btn:hover {
+    background-color: #0056b3;
 }
 
 #chat-box {
@@ -33,6 +51,8 @@ body {
     margin: 10px 0;
     padding: 10px;
     border-radius: 5px;
+    max-width: 70%;
+    word-wrap: break-word;
 }
 
 .message.user {
@@ -68,4 +88,30 @@ body {
 
 #send-btn:hover {
     background-color: #0056b3;
+}
+
+#history-panel {
+    position: fixed;
+    right: -300px;
+    top: 0;
+    height: 100%;
+    width: 300px;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: right 0.3s;
+}
+
+#history-panel.open {
+    right: 0;
+}
+
+#close-history-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
 }
