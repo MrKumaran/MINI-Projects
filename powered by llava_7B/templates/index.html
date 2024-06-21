@@ -3,10 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ollama llava:7B</title>
+    <title>ChatGPT Interface</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <div id="history-panel">
+        <button id="close-history-btn">×</button>
+        <h2>Chat History</h2>
+        <div id="history-content"></div>
+    </div>
+    <button id="toggle-history-btn">☰</button>
     <div id="chat-container">
         <div id="chat-box"></div>
         <div id="input-area">
@@ -14,12 +20,6 @@
             <button id="send-btn">Send</button>
         </div>
     </div>
-    <div id="history-panel">
-        <button id="close-history-btn">×</button>
-        <h2>Chat History</h2>
-        <div id="history-content"></div>
-    </div>
-    <button id="toggle-history-btn">☰</button>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </body>
 </html>
