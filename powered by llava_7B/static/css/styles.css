@@ -115,3 +115,8 @@ body {
     font-size: 24px;
     cursor: pointer;
 }
+
+#history-content {
+    padding: 20px;
+    white-space: pre-wrap;
+}
