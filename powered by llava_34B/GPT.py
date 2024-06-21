@@ -8,7 +8,6 @@ history_file = 'chat_history.txt'
 def index():
     return render_template('index.html')
 
-
 @app.route('/send_message', methods=['POST'])
 def send_message():
     user_message = request.json.get('message')
