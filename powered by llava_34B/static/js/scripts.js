@@ -5,6 +5,7 @@ document.getElementById('chat-input').addEventListener('keypress', function(even
     }
 });
 
+
 function sendMessage() {
     const inputField = document.getElementById('chat-input');
     const messageText = inputField.value.trim();
