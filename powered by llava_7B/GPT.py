@@ -30,8 +30,7 @@ def get_history():
 
 def save_to_history(user_message, bot_response):
     with open(history_file, 'a') as f:
-        f.write(f'User: {user_message}\n')
-        f.write(f'Bot: {bot_response}\n')
+        f.write(f'User: {user_message}\nBot: {bot_response}\n\n')
 
 
 if __name__ == '__main__':

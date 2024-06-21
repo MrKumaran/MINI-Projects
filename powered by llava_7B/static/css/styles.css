@@ -3,8 +3,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 1120px;
-    background-color: rgba(0, 0, 0, 0.73);
+    height: 100vh;
+    background-color: #f0f0f0;
     margin: 0;
 }
 
@@ -12,17 +12,16 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 99%;
-    max-width: 1858px;
-    height: 1050px;
+    width: 90%;
+    max-width: 600px;
+    height: 80vh;
     background-color: #fff;
-    border: 2px solid #c5a20f;
+    border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     position: relative;
 }
-
 
 #toggle-history-btn {
     position: absolute;
@@ -45,25 +44,31 @@ body {
     padding: 10px;
     overflow-y: auto;
     border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
 }
 
 .message {
     margin: 10px 0;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     max-width: 70%;
     word-wrap: break-word;
 }
 
 .message.user {
-    text-align: right;
-    background-color: rgba(255, 168, 0, 0.56);
+    background-color: #dcf8c6;
     align-self: flex-end;
+    margin-left: auto;
+    text-align: right;
 }
 
 .message.bot {
-    background-color: rgba(34, 220, 170, 0.81);
+    background-color: #ffffff;
     align-self: flex-start;
+    margin-right: auto;
+    text-align: left;
+    border: 1px solid #e5e5ea;
 }
 
 #input-area {
@@ -92,18 +97,18 @@ body {
 
 #history-panel {
     position: fixed;
-    right: -300px;
+    left: -300px;
     top: 0;
     height: 100%;
     width: 300px;
     background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
     overflow-y: auto;
-    transition: right 0.3s;
+    transition: left 0.3s;
 }
 
 #history-panel.open {
-    right: 0;
+    left: 0;
 }
 
 #close-history-btn {
@@ -114,4 +119,9 @@ body {
     border: none;
     font-size: 24px;
     cursor: pointer;
+}
+
+#history-content {
+    padding: 20px;
+    white-space: pre-wrap;
 }
