@@ -1,13 +1,13 @@
-This project is powered by ollama llava:7B or llava:latest. 
-official site https://ollama.com/library/llava:7b
+This project is powered by ollama qwen2:7B. 
+official site https://ollama.com/library/qwen2:7b
 
-You can also use llava:13B or llava:34B
+You can also use other model
 Just modify model name on python file GPT.py 
 Note: llava model can access internet
 
 ## Requirements:
 ollama need to be installed
-anyone of model need to installed(pulled) llava:7B, llava:13B or llava:34B for more details see -> https://ollama.com/library/llava:7b
+anyone of model need to installed(pulled) qwen2(this uses) for more details see -> https://ollama.com/library/qwen2:7b
 python need to installed(python3.9 recommended) also add python to PATH.
 Python packages -> ollama, flask
 
