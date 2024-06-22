@@ -6,7 +6,7 @@ app = Flask(__name__)
 history_file = 'chat_history.txt'
 
 # Change model name as you need
-ollama_model = 'llava:13B'
+ollama_model = 'qwen2:7b'
 
 
 @app.route('/')
