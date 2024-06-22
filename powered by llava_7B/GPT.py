@@ -5,8 +5,8 @@ import ollama
 app = Flask(__name__)
 history_file = 'chat_history.txt'
 
-# Assuming 'llava' is the correct Ollama model name
-ollama_model = 'llava'
+# Change model name as you need
+ollama_model = 'llava:13B'
 
 
 @app.route('/')
