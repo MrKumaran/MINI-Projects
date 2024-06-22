@@ -3,16 +3,16 @@ official site https://ollama.com/library/llava:7b
 
 You can also use llava:13B or llava:34B
 Just modify model name on python file GPT.py 
+# Note: llava model can access internet
 
-
-##Requirements:
+# Requirements:
 ollama need to be installed
 anyone of model need to installed(pulled) llava:7B, llava:13B or llava:34B for more details see -> https://ollama.com/library/llava:7b
 python need to installed(python3.9 recommended) also add python to PATH.
 Python packages -> ollama, flask
 
 
-##How to run:
+# How to run:
 Step 1 : Open command prompt(Windows) or terminal(Linux, macOS) based on your OS
 Step 2 : Type command ollama serve on command prompt(Windows) or terminal(Linux, macOS) based on your OS
 Step 3 : you can use python IDE or you can run it on terminal itself. It's your choice.
