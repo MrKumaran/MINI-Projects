@@ -12,47 +12,54 @@ function sendMessage() {
     const file = fileInput.files[0];
 
     if (messageText !== '' || file) {
+        displayMessage('user', messageText, file);
+
         const formData = new FormData();
         formData.append('message', messageText);
         if (file) {
             formData.append('file', file);
         }
 
-        axios.post('/send_message', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        }).then(response => {
-            addMessage('user', messageText, file ? URL.createObjectURL(file) : null);
-            addMessage('bot', response.data.response);
-        }).catch(error => {
-            console.error('Error sending message:', error);
-        });
-
-        inputField.value = '';
-        fileInput.value = '';
+        axios.post('/send_message', formData)
+            .then(response => {
+                const botMessage = response.data.response;
+                displayMessage('bot', botMessage);
+                inputField.value = ''; // Clear the input field
+                fileInput.value = ''; // Clear the file input
+            })
+            .catch(error => {
+                console.error('Error sending message:', error);
+            });
+    } else {
+        inputField.value = ''; // Ensure the input field is cleared
+        fileInput.value = ''; // Ensure the file input is cleared
     }
 }
 
-function addMessage(sender, text, imageUrl = null) {
+function displayMessage(sender, message, file = null) {
     const chatBox = document.getElementById('chat-box');
     const messageElement = document.createElement('div');
     messageElement.classList.add('message', sender);
 
-    if (imageUrl) {
-        const imgElement = document.createElement('img');
-        imgElement.src = imageUrl;
-        messageElement.appendChild(imgElement);
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            messageElement.appendChild(img);
+            if (message) {
+                const textNode = document.createTextNode(message);
+                messageElement.appendChild(textNode);
+            }
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+        reader.readAsDataURL(file);
+    } else {
+        messageElement.textContent = message;
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
-
-    if (text) {
-        const textElement = document.createElement('span');
-        textElement.textContent = text;
-        messageElement.appendChild(textElement);
-    }
-
-    chatBox.appendChild(messageElement);
-    chatBox.scrollTop = chatBox.scrollHeight;
 }
 
 function toggleHistory() {
@@ -68,15 +75,21 @@ function toggleHistory() {
 }
 
 function loadHistory() {
-    axios.get('/get_history')
+    axios.get('/chat_history')
         .then(response => {
             const historyContent = document.getElementById('history-content');
-            historyContent.innerHTML = '';
-            response.data.forEach(entry => {
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('message', entry.sender);
-                messageElement.innerHTML = entry.message;
-                historyContent.appendChild(messageElement);
+            historyContent.innerHTML = ''; // Clear previous history
+            response.data.history.forEach(entry => {
+                const userElement = document.createElement('div');
+                userElement.classList.add('message', 'user');
+                userElement.textContent = entry.user.replace('User: ', '');
+
+                const botElement = document.createElement('div');
+                botElement.classList.add('message', 'bot');
+                botElement.textContent = entry.bot.replace('Bot: ', '');
+
+                historyContent.appendChild(userElement);
+                historyContent.appendChild(botElement);
             });
         })
         .catch(error => {

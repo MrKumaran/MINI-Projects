@@ -79,9 +79,23 @@ body {
 .bot {
     background-color: #ffffff;
     align-self: flex-start;
-    margin-right: auto;
-    text-align: left;
-    border: 1px solid #ccc;
+}
+
+#chat-history {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -300px;
+    width: 300px;
+    background-color: #ffffff;
+    border-right: 1px solid #ccc;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#chat-history.visible {
+    left: 0;
 }
 
 #history-toggle {
@@ -90,46 +104,31 @@ body {
     left: 10px;
     font-size: 24px;
     cursor: pointer;
-}
-
-#chat-history {
-    width: 30%;
-    height: 100%;
-    background-color: #f0f0f0;
-    position: absolute;
-    left: -30%;
-    transition: left 0.3s;
-    overflow-y: auto;
-}
-
-#chat-history.hidden {
-    left: -30%;
-}
-
-#chat-history.visible {
-    left: 0;
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    z-index: 1000;
 }
 
 #history-title {
+    background-color: #f5f5f5;
     padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    background-color: #007bff;
-    color: white;
-    text-align: center;
+    border-bottom: 1px solid #ccc;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-#history-title button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-}
-
 #history-content {
     padding: 10px;
+}
+
+#close-history {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }

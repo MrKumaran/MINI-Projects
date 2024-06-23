@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory
 import os
 import ollama
-import base64
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -43,9 +42,9 @@ def send_message():
             {'role': 'user', 'content': user_message}
         ])
 
-    save_to_history(user_message, bot_response)
+    save_to_history(user_message, bot_response['message']['content'])
 
-    return jsonify({'status': 'success'})
+    return jsonify({'status': 'success', 'response': bot_response['message']['content']})
 
 @app.route('/chat_history')
 def get_chat_history():
@@ -60,7 +59,7 @@ def get_chat_history():
 
 def save_to_history(user_message, bot_response):
     with open(history_file, 'a') as f:
-        f.write(f"{user_message}\n{bot_response}\n\n")
+        f.write(f"User: {user_message}\nBot: {bot_response}\n\n")
 
 if __name__ == '__main__':
     app.run(debug=True)
