@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Interface</title>
-    <link rel="stylesheet" href="/static/css/styles.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="/static/css/styles.css">
 </head>
 <body>
     <div id="chat-container">
+        <div id="history-toggle" onclick="toggleHistory()">☰</div>
         <div id="chat-box"></div>
         <div id="input-area">
             <input type="text" id="chat-input" placeholder="Type a message...">
@@ -15,7 +16,14 @@
             <button id="send-btn">Send</button>
         </div>
     </div>
-
-    <script src="static/js/script.js"></script> <!-- Link to your JS file -->
+    <div id="chat-history" class="hidden">
+        <div id="history-title">
+            Chat History
+            <button id="close-history" onclick="toggleHistory()">✖</button>
+        </div>
+        <div id="history-content"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/static/js/script.js"></script>
 </body>
 </html>
