@@ -10,9 +10,11 @@ body {
 }
 
 #chat-container {
-    width: 80%;
-    height: 80%;
-    background-color: #fff;
+    width: 90%;
+    max-width: 800px;
+    height: 90%;
+    max-height: 600px;
+    background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -25,12 +27,14 @@ body {
     flex: 1;
     overflow-y: auto;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 #input-area {
     display: flex;
     padding: 10px;
-    background-color: #f5f5f5;
+    background-color: rgba(245, 245, 245, 0.8);
     border-top: 1px solid #ccc;
 }
 
@@ -53,6 +57,11 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#send-btn:hover {
+    background-color: #0056b3;
 }
 
 .message {
@@ -60,6 +69,10 @@ body {
     padding: 10px;
     border-radius: 10px;
     max-width: 70%;
+    background-color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .message img {
@@ -81,13 +94,27 @@ body {
     align-self: flex-start;
 }
 
+.message.user::before {
+    content: "\f007"; /* User icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
+.message.bot::before {
+    content: "\f544"; /* Robot icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 5px;
+}
+
 #chat-history {
     position: absolute;
     top: 0;
     bottom: 0;
     left: -300px;
     width: 300px;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.9);
     border-right: 1px solid #ccc;
     overflow-y: auto;
     transition: left 0.3s ease;
@@ -112,7 +139,7 @@ body {
 }
 
 #history-title {
-    background-color: #f5f5f5;
+    background-color: rgba(245, 245, 245, 0.8);
     padding: 10px;
     border-bottom: 1px solid #ccc;
     display: flex;

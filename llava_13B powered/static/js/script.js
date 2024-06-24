@@ -24,40 +24,35 @@ function sendMessage() {
             .then(response => {
                 const botMessage = response.data.response;
                 displayMessage('bot', botMessage);
-                inputField.value = ''; // Clear the input field
+                inputField.value = ''; // Clear the input field immediately
                 fileInput.value = ''; // Clear the file input
             })
             .catch(error => {
                 console.error('Error sending message:', error);
             });
     } else {
-        inputField.value = ''; // Ensure the input field is cleared
-        fileInput.value = ''; // Ensure the file input is cleared
+        inputField.value = ''; // Clear the input field if no message
+        fileInput.value = ''; // Clear the file input if no file
     }
 }
 
-function displayMessage(sender, message, file = null) {
+function displayMessage(sender, message, file) {
     const chatBox = document.getElementById('chat-box');
-    const messageElement = document.createElement('div');
-    messageElement.classList.add('message', sender);
+    let messageElement;
 
     if (file) {
         const reader = new FileReader();
+
         reader.onload = function(e) {
-            const img = document.createElement('img');
-            img.src = e.target.result;
-            messageElement.appendChild(img);
-            if (message) {
-                const textNode = document.createTextNode(message);
-                messageElement.appendChild(textNode);
-            }
-            chatBox.appendChild(messageElement);
+            messageElement = `<div class="message ${sender}"><img src="${e.target.result}" alt="Image" /></div>`;
+            chatBox.insertAdjacentHTML('beforeend', messageElement);
             chatBox.scrollTop = chatBox.scrollHeight;
-        }
+        };
+
         reader.readAsDataURL(file);
     } else {
-        messageElement.textContent = message;
-        chatBox.appendChild(messageElement);
+        messageElement = `<div class="message ${sender}">${message}</div>`;
+        chatBox.insertAdjacentHTML('beforeend', messageElement);
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 }
@@ -67,7 +62,7 @@ function toggleHistory() {
     if (historyPanel.classList.contains('hidden')) {
         historyPanel.classList.remove('hidden');
         historyPanel.classList.add('visible');
-        loadHistory();
+        loadHistory(); // Load history when opening the panel
     } else {
         historyPanel.classList.remove('visible');
         historyPanel.classList.add('hidden');
@@ -78,21 +73,14 @@ function loadHistory() {
     axios.get('/chat_history')
         .then(response => {
             const historyContent = document.getElementById('history-content');
-            historyContent.innerHTML = ''; // Clear previous history
+            historyContent.innerHTML = ''; // Clear existing content
+
             response.data.history.forEach(entry => {
-                const userElement = document.createElement('div');
-                userElement.classList.add('message', 'user');
-                userElement.textContent = entry.user.replace('User: ', '');
+                const userElement = `<div class="message user"><i class="fas fa-user"></i> ${entry.user}</div>`;
+                const botElement = `<div class="message bot"><i class="fas fa-robot"></i> ${entry.bot}</div>`;
 
-                const botElement = document.createElement('div');
-                botElement.classList.add('message', 'bot');
-                botElement.textContent = entry.bot.replace('Bot: ', '');
-
-                historyContent.appendChild(userElement);
-                historyContent.appendChild(botElement);
+                historyContent.insertAdjacentHTML('beforeend', userElement + botElement);
             });
         })
-        .catch(error => {
-            console.error('Error loading history:', error);
-        });
+        .catch(error => console.error('Error loading history:', error));
 }

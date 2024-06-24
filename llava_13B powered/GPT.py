@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, send_from_directory
 import os
 import ollama
+import base64
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
@@ -35,7 +36,7 @@ def send_message():
         with open(filename, 'rb') as f:
             image_data = f.read()
         bot_response = ollama.chat(model=ollama_model, messages=[
-            {'role': 'user', 'content': user_message}
+            {'role': 'user', 'content': user_message, 'image': base64.b64encode(image_data).decode('utf-8')}
         ])
     else:
         bot_response = ollama.chat(model=ollama_model, messages=[
