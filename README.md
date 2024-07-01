@@ -1,19 +1,19 @@
 # Ollama-Projects
-This repository is filled with ollama powered projects.
+This repository is filled with ollama powered projects.  
 
-Each directory is hosting different ollama models. 
-For more details on model check Ollama official page https://ollama.com/library
+Each directory is hosting different ollama models.   
+For more details on model check Ollama official page https://ollama.com/library  
 
 
 You can also use other model
-Just modify model name on python file GPT.py 
-Note: llava model can access internet
+Just modify model name on python file GPT.py   
+Note: llava model can access internet  
 
 ## Requirements:
-ollama need to be installed
-anyone of model need to installed(pulled)
-python need to installed(python3.9 recommended) also add python to PATH.
-Python packages -> ollama, flask
+ollama need to be installed  
+anyone of model need to installed(pulled)  
+python need to installed(python3.9 recommended) also add python to PATH.  
+Python packages -> ollama, flask  
 
 
 ## How to run:
