@@ -1,30 +1,27 @@
 # Personal GPT
-This repository is filled with ollama powered projects.  
 
-Each directory is hosting different ollama models.   
-For more details on model check Ollama official page https://ollama.com/library  
+This repository is filled with Ollama-powered projects.
 
+Each directory hosts different Ollama models.  
+For more details on the models, check the Ollama official page: [Ollama Library](https://ollama.com/library)
 
-You can also use other model
-Just modify model name on python file GPT.py   
-Note: llava model can access internet  
+You can also use other models.  
+Just modify the model name in the Python file `GPT.py`.  
+Note: The LLaVA model can access the internet.
 
 ## Requirements:
-ollama need to be installed  
-anyone of model need to installed(pulled)  
-python need to installed(python3.9 recommended) also add python to PATH.  
-Python packages -> ollama, flask  
-
+- Ollama needs to be installed.
+- Any one of the models needs to be installed (pulled).
+- Python needs to be installed (Python 3.9 recommended). Also, add Python to PATH.
+- Python packages: `ollama`, `flask`.
 
 ## How to run:
-Step 1 : Open command prompt(Windows) or terminal(Linux, macOS) based on your OS  
-Step 2 : use command '''ollama serve''' on bash 
-Step 3 : you can use python IDE or you can run it on bash itself. It's your choice.  
-Step 4(IDE) : Open python GPT.py file on python IDE and run the file on IDE.  
-Step 4(bash) : Open terminal and navigate to Directory where you cloned this repository using cd command.  
-                    then based on your python version use command '''python3 GPT.py''' or '''python GPT.py'''  
-Step 5 : after running the python file. Open any browser and search for http://127.0.0.1:5000  
-step 6 : Enjoy offline genAI on your local machine  
-Step 7 : To exit stop python file and ollama using control+c on bash
-
-Tips: If you're not going to use this GenAI, I would recommend restarting your PC since it will clear pipelines and caches. 
+1. Open Command Prompt (Windows) or Terminal (Linux, macOS) based on your OS.
+2. Use the command `ollama serve` in the terminal.
+3. You can use a Python IDE or run it in the terminal itself. It's your choice.
+4. (IDE) Open the Python `GPT.py` file in the Python IDE and run the file in the IDE.
+   (Terminal) Open Terminal and navigate to the directory where you cloned this repository using the `cd` command.
+   Then, based on your Python version, use the command `python3 GPT.py` or `python GPT.py`.
+5. After running the Python file, open any browser and go to `http://127.0.0.1:5000`.
+6. Enjoy offline GenAI on your local machine.
+7. To exit, stop the Python file and Ollama using `Ctrl+C` in the terminal.
