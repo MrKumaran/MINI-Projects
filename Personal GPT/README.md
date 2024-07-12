@@ -7,7 +7,7 @@ For more details on the models, check the Ollama official page: [Ollama Library]
 
 You can also use other models.  
 Just modify the model name in the Python file `GPT.py`.  
-Note: The LLaVA model can access the internet.
+Note: The llava model can access the internet.
 
 ## Requirements:
 - Ollama needs to be installed.
