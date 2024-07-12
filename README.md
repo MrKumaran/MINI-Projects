@@ -28,4 +28,4 @@ Open an issue or submit a pull request. Follow the guidelines in the CONTRIBUTIN
 MIT License. See the LICENSE file for details.
 
 ## Contact
-linkedin[]
+[LinkedIn](https://www.linkedin.com/in/mrkumaran/)
