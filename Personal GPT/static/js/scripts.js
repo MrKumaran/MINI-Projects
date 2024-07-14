@@ -24,9 +24,19 @@ function sendMessage() {
         })
         .then(response => response.json())
         .then(data => {
-            addMessage('bot', data.response);
+            addMessage('bot', formatBotResponse(data.response));
         });
     }
+}
+
+function formatBotResponse(response) {
+    // Replace **text** with <b>text</b> for bold formatting
+    response = response.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+
+    // Ensure each new sentence starts on a new line
+    response = response.replace(/(\. |\.\n|\.$)/g, '$1<br>');
+
+    return response;
 }
 
 function addMessage(sender, text) {
@@ -42,7 +52,7 @@ function addMessage(sender, text) {
     }
 
     const textElement = document.createElement('div');
-    textElement.textContent = text;
+    textElement.innerHTML = text;  // Use innerHTML to preserve formatting
 
     messageElement.appendChild(iconElement);
     messageElement.appendChild(textElement);
@@ -74,7 +84,7 @@ function toggleHistory() {
                 }
 
                 const textElement = document.createElement('div');
-                textElement.textContent = entry.message;
+                textElement.innerHTML = formatBotResponse(entry.message);  // Use formatBotResponse for history
 
                 historyMessageElement.appendChild(iconElement);
                 historyMessageElement.appendChild(textElement);
