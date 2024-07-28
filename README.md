@@ -3,8 +3,6 @@
 ## Table of Contents
 - [Projects](#projects)
   - [Project 1: Personal ChatGPT](#project-1-personal-chatgpt)
-- [Installation](#installation)
-- [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
 
@@ -20,9 +18,6 @@
 
 ## Installation
 Refer to the README in the project folder for specific installation steps and requirements.
-
-## Contributing
-Open an issue or submit a pull request. Follow the guidelines in the CONTRIBUTING.md file.
 
 ## License
 MIT License. See the LICENSE file for details.
