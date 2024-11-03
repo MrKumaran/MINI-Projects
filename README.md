@@ -3,6 +3,7 @@
 ## Table of Contents
 - [Projects](#projects)
   - [Project 1: Personal ChatGPT](#project-1-personal-chatgpt)
+  - [Project 2: Student data format in C](#project-2-Student-data-format-in-C)
 - [License](#license)
 - [Contact](#contact)
 
@@ -15,6 +16,8 @@
 
 **Key Features:**
 - Own personal offline generative AI
+
+
 
 ## Installation
 Refer to the README in the project folder for specific installation steps and requirements.
