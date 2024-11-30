@@ -3,9 +3,9 @@
 
 int main(int argc, char *argv[]){
 	char *host;
-	int port;
+	int port, s;
 
-	int (argc < 3){
+	if (argc < 3){
 			fprintf(stderr, "Usage: %s <host> <port>\n",
 				argv[0]);
 
@@ -14,4 +14,9 @@ int main(int argc, char *argv[]){
 
 	host = argv[1];
 	port = atoi(argv[2]);
+
+	s = socket(AF_INET, SOCK_STREAM, 0);
+	if (s < 0){
+		perror("socket");
+	}
 }
