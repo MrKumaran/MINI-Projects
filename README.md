@@ -4,6 +4,7 @@
 - [Projects](#projects)
   - [Project 1: Personal ChatGPT](#project-1-personal-chatgpt)
   - [Project 2: Student data format in C](#project-2-Student-data-format-in-C)
+  - [Project 3: Holiday Finder Android app](https://github.com/MrKumaran/Holiday-Finder/tree/main)
 - [License](#license)
 - [Contact](#contact)
 
